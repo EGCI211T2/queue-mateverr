@@ -14,7 +14,7 @@ int main(int argc , char **argv) {
             x=q.dequeue();
             if(x!=-1) cout<<"dequeing "<<x<<endl;
         }
-        else 
+        else // Collect two consecutive values order and qty
         {
           q.enqueue(atoi(argv[i]) * atoi);  
         }
