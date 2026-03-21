@@ -1,10 +1,9 @@
 #ifndef node_h
 #define node_h
 
-class NODE
-{
+class NODE {
     int data;
-    NODE* nextPtr;
+    NODE *nextPtr;
 
 public:
     NODE(int);
@@ -15,38 +14,14 @@ public:
 };
 typedef NODE* NodePtr;
 
+NODE::NODE(int value) {data = value; nextPtr = NULL;}
 
-NODE::NODE(int value)
-{
-   data = value;
-   nextPtr = NULL;
-}
+NODE* NODE::get_next() {return nextPtr;}
 
-NODE* NODE::get_next()
-{
-    return nextPtr;
-}
+int NODE::get_value() {return data;}
 
+void NODE::set_next(NODE *t) {nextPtr = t;}
 
-
-int NODE::get_value()
-{
-    return data;
-}
-
-
-
-
-void NODE::set_next(NODE *t)
-{
-    nextPtr = t;
-}
-
-
-
-NODE::~NODE()
-{
-}
-
+NODE::~NODE() {}
 
 #endif
