@@ -15,7 +15,8 @@ public:
 
 void Queue::enqueue(int x)
 {
-    NodePtr new_node = new NODE(x);
+    NodePtr new_node = new NODE(x); 
+
     if(new_node)
     { 
         if (headPtr == NULL) // if the Queqe is newly initialized head and tail will be NULL
@@ -23,6 +24,7 @@ void Queue::enqueue(int x)
             headPtr = new_node;
             tailPtr = new_node;
         }
+
         else 
         {
             tailPtr->set_next(new_node);
@@ -34,7 +36,9 @@ void Queue::enqueue(int x)
     }
 }
 
-int Queue::dequeue(){
+int Queue::dequeue()
+{
+    /*
     if(size>0)
     {
         NodePtr temp = headPtr;
@@ -49,11 +53,34 @@ int Queue::dequeue(){
         }
 
         return value;
-          
-    
     }
+
   cout<<"Empty queue";
   return -1;
+  */
+
+    if (headPtr != NULL)
+    {
+        NodePtr t = headPtr; // assign temporart to headPtr
+
+        int value = t->get_value();
+
+        headPtr = headPtr->get_next();
+
+        cout << "dequeing " << value << endl;
+        delete t;
+        size--;
+
+        if (headPtr == NULL) 
+        {
+            tailPtr = NULL;
+        }
+        
+        return value;
+    }
+
+    cout << "Empty Queue " <<  endl;
+    return -1;
 }
 
 
@@ -64,6 +91,8 @@ Queue::Queue()
     tailPtr = NULL;
     size = 0;
 }
+
+
 Queue::~Queue()
 {
     //delete all remaning Queue (i.e. DQ all) 
